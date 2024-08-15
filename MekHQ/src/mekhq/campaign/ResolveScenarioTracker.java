@@ -371,6 +371,7 @@ public class ResolveScenarioTracker {
                     if ((e.isDropShip())
                             && (dropShipBonusPercentage > 0)
                             && (scenario.getBoardType() == Scenario.T_GROUND)) {
+                        //campaign.getCampaignOptions().
                         dropShipBonus = dropShipBonus.plus(
                                 generateNewTestUnit(e).getSellValue().multipliedBy(dropShipBonusPercentage)
                         );

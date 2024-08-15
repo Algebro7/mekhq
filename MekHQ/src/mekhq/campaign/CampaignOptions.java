@@ -165,6 +165,9 @@ public class CampaignOptions {
     private final int[] planetTechAcquisitionBonus;
     private final int[] planetIndustryAcquisitionBonus;
     private final int[] planetOutputAcquisitionBonus;
+
+    // Salvage
+    private boolean noSalvageDropshipsOnGround;
     //endregion Supplies and Acquisition Tab
 
     //region Tech Limits Tab
@@ -687,6 +690,9 @@ public class CampaignOptions {
         planetOutputAcquisitionBonus[EquipmentType.RATING_D] = 2;
         planetOutputAcquisitionBonus[EquipmentType.RATING_E] = 4;
         planetOutputAcquisitionBonus[EquipmentType.RATING_F] = 8;
+
+        // Salvage
+        noSalvageDropshipsOnGround = true;
         //endregion Supplies and Acquisitions Tab
 
         //region Tech Limits Tab
@@ -3971,8 +3977,16 @@ public class CampaignOptions {
         return noClanPartsFromIS;
     }
 
+    public boolean isNoSalvageDropshipsOnGround() {
+        return noSalvageDropshipsOnGround;
+    }
+
     public void setDisallowClanPartsFromIS(final boolean noClanPartsFromIS) {
         this.noClanPartsFromIS = noClanPartsFromIS;
+    }
+
+    public void setNoSalvageDropshipsOnGround(final boolean noSalvageDropshipsOnGround) {
+        this.noSalvageDropshipsOnGround = noSalvageDropshipsOnGround;
     }
 
     public boolean isPlanetAcquisitionVerbose() {
@@ -4590,6 +4604,7 @@ public class CampaignOptions {
         MHQXMLUtility.writeSimpleXMLTag(pw, indent, "planetAcquisitionFactionLimit", getPlanetAcquisitionFactionLimit().name());
         MHQXMLUtility.writeSimpleXMLTag(pw, indent, "planetAcquisitionNoClanCrossover", planetAcquisitionNoClanCrossover);
         MHQXMLUtility.writeSimpleXMLTag(pw, indent, "noClanPartsFromIS", noClanPartsFromIS);
+        MHQXMLUtility.writeSimpleXMLTag(pw, indent, "noSalvageDropshipsOnGround", noSalvageDropshipsOnGround);
         MHQXMLUtility.writeSimpleXMLTag(pw, indent, "penaltyClanPartsFromIS", penaltyClanPartsFromIS);
         MHQXMLUtility.writeSimpleXMLTag(pw, indent, "planetAcquisitionVerbose", planetAcquisitionVerbose);
         MHQXMLUtility.writeSimpleXMLTag(pw, indent, "maxJumpsPlanetaryAcquisition", maxJumpsPlanetaryAcquisition);
@@ -5177,6 +5192,8 @@ public class CampaignOptions {
                     retVal.planetAcquisitionNoClanCrossover = Boolean.parseBoolean(wn2.getTextContent().trim());
                 } else if (wn2.getNodeName().equalsIgnoreCase("noClanPartsFromIS")) {
                     retVal.noClanPartsFromIS = Boolean.parseBoolean(wn2.getTextContent().trim());
+                } else if (wn2.getNodeName().equalsIgnoreCase("noSalvageDropshipsOnGround")) {
+                    retVal.noSalvageDropshipsOnGround = Boolean.parseBoolean(wn2.getTextContent().trim());
                 } else if (wn2.getNodeName().equalsIgnoreCase("penaltyClanPartsFromIS")) {
                     retVal.penaltyClanPartsFromIS = Integer.parseInt(wn2.getTextContent().trim());
                 } else if (wn2.getNodeName().equalsIgnoreCase("planetAcquisitionVerbose")) {

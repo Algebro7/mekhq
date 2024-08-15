@@ -1145,10 +1145,12 @@ public class CampaignOptionsPane extends AbstractMHQTabbedPane {
         JPanel panSubAcquire = new JPanel(new GridBagLayout());
         JPanel panSubDelivery = new JPanel(new GridBagLayout());
         JPanel panSubPlanetAcquire = new JPanel(new GridBagLayout());
+        JPanel panSubSalvage = new JPanel(new GridBagLayout());
 
         panSubAcquire.setBorder(BorderFactory.createTitledBorder(resources.getString("lblSubAcquire.text")));
         panSubDelivery.setBorder(BorderFactory.createTitledBorder(resources.getString("lblSubDelivery.text")));
         panSubPlanetAcquire.setBorder(BorderFactory.createTitledBorder(resources.getString("lblSubPlanetAcquire.text")));
+        panSubSalvage.setBorder(BorderFactory.createTitledBorder(resources.getString("lblSubSalvage.text")));
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1173,6 +1175,14 @@ public class CampaignOptionsPane extends AbstractMHQTabbedPane {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         panSupplies.add(panSubPlanetAcquire, gridBagConstraints);
+
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        panSupplies.add(panSubSalvage, gridBagConstraints);
 
         spnAcquireWaitingPeriod = new JSpinner(new SpinnerNumberModel(1, 1, 365, 1));
         ((DefaultEditor) spnAcquireWaitingPeriod.getEditor()).getTextField().setEditable(false);
@@ -1489,6 +1499,12 @@ public class CampaignOptionsPane extends AbstractMHQTabbedPane {
         gridBagConstraints.fill = GridBagConstraints.NONE;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         panSubPlanetAcquire.add(panSocioIndustrialBonus, gridBagConstraints);
+
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = GridBagConstraints.NONE;
+        panSubSalvage.add(new JCheckBox(resources.getString("lblSalvageDropShipsOnGround.text")), gridBagConstraints);
 
         return new JScrollPane(panSupplies);
     }
