@@ -8069,6 +8069,14 @@ public class Campaign implements ITechManager {
     }
 
     /**
+     *
+     * @return
+     */
+    public Integer getWaterAvailability() {
+        return location.getPlanet().getPercentWater(getLocalDate());
+    }
+
+    /**
      * Sets the type of rating method used.
      */
     public void setUnitRating(IUnitRating rating) {

@@ -5500,6 +5500,15 @@ public class Unit implements ITechnology {
     }
 
     public Money getFuelCost() {
+        Integer availability = campaign.getWaterAvailability();
+        Money hydrogenCost = Money.zero();
+        if (availability >= 30) {
+            hydrogenCost = Money.of(500);
+        } else if (availability >= 20) {
+            hydrogenCost = Money.of(2000);
+        } else {
+            hydrogenCost = Money.of(15000);
+        }
         Money fuelCost = Money.zero();
 
         if ((entity instanceof Warship) || (entity instanceof SmallCraft)) {
@@ -5517,6 +5526,25 @@ public class Unit implements ITechnology {
         }
 
         return fuelCost;
+    }
+
+    /**
+     *
+     * @return the amount of Hydrogen fuel that can be generated per day, in tons.
+     */
+    public int generateHydrogenFuel() {
+        Engine engine = entity.getEngine();
+        if (mothballed || isRefitting() || !(engine.isFission() || engine.isFusion() || engine.isSolar())) {
+            return 0;
+        }
+        return 10;
+    }
+
+    public int getHydrogenFuelConsumption() {
+        Engine engine = entity.getEngine();
+        if (engine.isFusion()) {
+
+        }
     }
 
     public double getTonsBurnDay(Entity e) {
@@ -5572,6 +5600,13 @@ public class Unit implements ITechnology {
             return Money.of(((Aero) e).getFuelTonnage() * 4.0 * 15000.0);
         } else {
             return Money.of(((Aero) e).getFuelTonnage() * 4.0 * 1000.0);
+        }
+    }
+
+    public Money getAeroFuelCost(Entity e) {
+        Engine en = e.getEngine();
+        if (en.isFusion() || en.isFission() || en.isSolar()) {
+
         }
     }
 

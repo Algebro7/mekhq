@@ -143,7 +143,11 @@ public class Accountant {
     }
 
     public Money getMonthlyFuel() {
-        return getHangar().getUnitCosts(u -> !u.isMothballed(), Unit::getFuelCost);
+        int
+        for (Unit unit : getHangar().getUnits()) {
+
+        }
+        //return getHangar().getUnitCosts(u -> !u.isMothballed(), Unit::getFuelCost);
     }
 
     public Money getMonthlyAmmo() {
