@@ -158,9 +158,9 @@ public class Accountant {
      * @return the total value of units in the TO&amp;E. This serves as the basis for contract payments
      * in the StellarOps Beta.
      */
-    public Money getForceValue(boolean noInfantry) {
+    public Money getForceValue(boolean noInfantry, boolean combatOnly) {
         Money value = Money.zero();
-        for (UUID uuid : getCampaign().getForces().getAllUnits(false)) {
+        for (UUID uuid : getCampaign().getForces().getAllUnits(combatOnly)) {
             Unit u = getHangar().getUnit(uuid);
             if (null == u) {
                 continue;
@@ -225,9 +225,9 @@ public class Accountant {
         if (getCampaignOptions().isUsePeacetimeCost()) {
             return getPeacetimeCost()
                     .multipliedBy(0.75)
-                    .plus(getForceValue(getCampaignOptions().isInfantryDontCount()));
+                    .plus(getForceValue(getCampaignOptions().isInfantryDontCount(), false));
         } else if (getCampaignOptions().isEquipmentContractBase()) {
-            return getForceValue(getCampaignOptions().isInfantryDontCount());
+            return getForceValue(getCampaignOptions().isInfantryDontCount(), false);
         } else {
             return getTheoreticalPayroll(getCampaignOptions().isInfantryDontCount());
         }
