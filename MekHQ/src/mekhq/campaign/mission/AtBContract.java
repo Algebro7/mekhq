@@ -2132,8 +2132,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Get the command roll that was used to determine command rights. Only used by CamOps Contract
-     * Market.
+     * Get the command roll that was used to determine command rights.
      *
      * @return
      */
@@ -2142,8 +2141,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Set the command roll that was used to determine command rights. Only used by CamOps Contract
-     * Market.
+     * Set the command roll that was used to determine command rights.
      *
      * @param roll
      */
@@ -2152,8 +2150,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Get the salvage roll that was used to determine salvage rights. Only used by CamOps Contract
-     * Market.
+     * Get the salvage roll that was used to determine salvage rights.
      *
      * @return
      */
@@ -2162,8 +2159,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Set the salvage roll that was used to determine salvage rights. Only used by CamOps Contract
-     * Market.
+     * Set the salvage roll that was used to determine salvage rights.
      *
      * @param roll
      */
@@ -2172,8 +2168,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Get the support roll that was used to determine support rights. Only used by CamOps Contract
-     * Market.
+     * Get the support roll that was used to determine support rights.
      *
      * @return
      */
@@ -2182,8 +2177,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Set the support roll that was used to determine support rights. Only used by CamOps Contract
-     * Market.
+     * Set the support roll that was used to determine support rights.
      *
      * @param roll
      */
@@ -2192,8 +2186,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Get the transport roll that was used to determine transport rights. Only used by CamOps Contract
-     * Market.
+     * Get the transport roll that was used to determine transport rights.
      *
      * @return
      */
@@ -2202,8 +2195,7 @@ public class AtBContract extends Contract {
     }
 
     /**
-     * Set the transport roll that was used to determine transport rights. Only used by CamOps Contract
-     * Market.
+     * Set the transport roll that was used to determine transport rights.
      *
      * @param roll
      */
