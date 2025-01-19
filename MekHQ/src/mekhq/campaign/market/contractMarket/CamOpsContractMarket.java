@@ -25,6 +25,7 @@ import mekhq.MekHQ;
 import mekhq.campaign.Campaign;
 import mekhq.campaign.market.enums.ContractMarketMethod;
 import mekhq.campaign.mission.AtBContract;
+import mekhq.campaign.mission.CamOpsContract;
 import mekhq.campaign.mission.enums.AtBContractType;
 import mekhq.campaign.personnel.Person;
 import mekhq.campaign.personnel.SkillType;
@@ -54,11 +55,11 @@ public class CamOpsContractMarket extends AbstractContractMarket {
     public AtBContract addAtBContract(Campaign campaign) {
         HiringHallModifiers hiringHallModifiers = getHiringHallModifiers(campaign);
         ReputationController reputation = campaign.getReputation();
-        Optional<AtBContract> c = generateContract(campaign, reputation, hiringHallModifiers);
-        if (c.isPresent()) {
-            AtBContract atbContract = c.get();
-            contracts.add(atbContract);
-            return atbContract;
+        Optional<CamOpsContract> contractOpt = generateContract(campaign, reputation, hiringHallModifiers);
+        if (contractOpt.isPresent()) {
+            CamOpsContract contract = contractOpt.get();
+            contracts.add(contract);
+            return contract;
         }
         return null;
     }
@@ -169,9 +170,9 @@ public class CamOpsContractMarket extends AbstractContractMarket {
         }
     }
 
-    private Optional<AtBContract> generateContract(Campaign campaign, ReputationController reputation,
+    private Optional<CamOpsContract> generateContract(Campaign campaign, ReputationController reputation,
                                                    HiringHallModifiers hiringHallModifiers) {
-        AtBContract contract = new AtBContract("UnnamedContract");
+        CamOpsContract contract = new CamOpsContract("UnnamedContract");
         lastId++;
         contract.setId(lastId);
         contractIds.put(lastId, contract);
