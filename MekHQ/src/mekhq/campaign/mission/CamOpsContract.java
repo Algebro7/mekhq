@@ -19,9 +19,26 @@
 package mekhq.campaign.mission;
 
 import megamek.logging.MMLogger;
+import mekhq.campaign.Campaign;
+import mekhq.campaign.finances.Accountant;
+import mekhq.campaign.finances.Money;
 
 public class CamOpsContract extends AtBContract {
     private static final MMLogger logger = MMLogger.create(CamOpsContract.class);
 
     public CamOpsContract(String name) { super(name); }
+
+    @Override
+    public void calculateContract(Campaign campaign) {
+        Accountant accountant = campaign.getAccountant();
+        setBaseAmount(calculateBaseAmount(campaign));
+    }
+
+    private Money calculateBaseAmount(Campaign campaign) {
+        Accountant accountant = campaign.getAccountant();
+        Money payment = accountant.getPeacetimeCost().multipliedBy(0.75);
+        Money forceValue = accountant.getForceValue(campaign.getCampaignOptions().isInfantryDontCount(), true);
+        payment.plus(forceValue.multipliedBy(0.05));
+        return payment;
+    }
 }
